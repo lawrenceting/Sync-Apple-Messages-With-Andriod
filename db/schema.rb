@@ -10,12 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220125338) do
+ActiveRecord::Schema.define(version: 20170224202520) do
+
+  create_table "buddies", force: :cascade do |t|
+    t.string   "fullname"
+    t.string   "buddyid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "messages", force: :cascade do |t|
     t.text     "content"
+    t.string   "fullname"
+    t.string   "buddyid"
+    t.integer  "buddy_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["buddy_id"], name: "index_messages_on_buddy_id"
   end
 
 end

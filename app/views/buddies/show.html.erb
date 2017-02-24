@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fullname:</strong>
+  <%= @buddy.fullname %>
+</p>
+
+<p>
+  <strong>Buddyid:</strong>
+  <%= @buddy.buddyid %>
+</p>
+
+<%= link_to 'Edit', edit_buddy_path(@buddy) %> |
+<%= link_to 'Back', buddies_path %>

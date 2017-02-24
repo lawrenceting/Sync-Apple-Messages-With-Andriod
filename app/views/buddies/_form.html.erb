@@ -1,0 +1,27 @@
+<%= form_for(buddy) do |f| %>
+  <% if buddy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(buddy.errors.count, "error") %> prohibited this buddy from being saved:</h2>
+
+      <ul>
+      <% buddy.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fullname %>
+    <%= f.text_field :fullname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :buddyid %>
+    <%= f.text_field :buddyid %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

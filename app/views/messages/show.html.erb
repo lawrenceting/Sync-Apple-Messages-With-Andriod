@@ -5,5 +5,20 @@
   <%= @message.content %>
 </p>
 
+<p>
+  <strong>Fullname:</strong>
+  <%= @message.fullname %>
+</p>
+
+<p>
+  <strong>Buddyid:</strong>
+  <%= @message.buddyid %>
+</p>
+
+<p>
+  <strong>Buddy:</strong>
+  <%= @message.buddy %>
+</p>
+
 <%= link_to 'Edit', edit_message_path(@message) %> |
 <%= link_to 'Back', messages_path %>

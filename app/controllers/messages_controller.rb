@@ -1,10 +1,10 @@
 class MessagesController < ApplicationController
 	before_action :set_message, only: [:show, :edit, :update, :destroy]
-	skip_before_action :verify_authenticity_token
+	skip_before_action :verify_authenticity_token	
+
   # GET /messages
   # GET /messages.json
   def index
-
     @messages = Message.all
   end
 
@@ -25,8 +25,9 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @message = Message.new(message_params)
-
+	@message = Message.new(message_params)
+	@message.buddy_id = Buddy.find_or_create_by(buddyid: @message.buddyid, fullname: @message.fullname).id
+	  
     respond_to do |format|
       if @message.save
         format.html { redirect_to @message, notice: 'Message was successfully created.' }
@@ -70,6 +71,6 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      params.require(:message).permit(:content)
+      params.require(:message).permit(:content, :fullname, :buddyid, :buddy_id)
     end
 end

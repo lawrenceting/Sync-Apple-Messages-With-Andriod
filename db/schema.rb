@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170224202520) do
+ActiveRecord::Schema.define(version: 20170225101144) do
 
   create_table "buddies", force: :cascade do |t|
     t.string   "fullname"
@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(version: 20170224202520) do
     t.text     "content"
     t.string   "fullname"
     t.string   "buddyid"
+    t.boolean  "sent"
+    t.boolean  "received"
+    t.boolean  "delivered"
     t.integer  "buddy_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

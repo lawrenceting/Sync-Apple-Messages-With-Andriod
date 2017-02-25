@@ -4,10 +4,16 @@ one:
   content: MyText
   fullname: MyString
   buddyid: MyString
+  sent: false
+  received: false
+  delivered: false
   buddy: one
 
 two:
   content: MyText
   fullname: MyString
   buddyid: MyString
+  sent: false
+  received: false
+  delivered: false
   buddy: two

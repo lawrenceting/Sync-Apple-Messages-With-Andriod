@@ -10,9 +10,10 @@
   <%= @buddy.buddyid %>
 </p>
 
-
 <% @messages.each do |m| %>
 	<p>
+		<%= "sent: " if m.sent %>
+		<%= "received: " if m.received %>
 		<%= m.content %>
 		<%= link_to "See more", message_path(m) %>
 	</p>

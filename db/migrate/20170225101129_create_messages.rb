@@ -4,6 +4,9 @@ class CreateMessages < ActiveRecord::Migration[5.0]
       t.text :content
       t.string :fullname
       t.string :buddyid
+      t.boolean :sent
+      t.boolean :received
+      t.boolean :delivered
       t.references :buddy, foreign_key: true
 
       t.timestamps

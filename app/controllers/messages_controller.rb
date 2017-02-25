@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
 	before_action :set_message, only: [:show, :edit, :update, :destroy]
-	skip_before_action :verify_authenticity_token	
+	skip_before_action :verify_authenticity_token
 
   # GET /messages
   # GET /messages.json
@@ -13,6 +13,10 @@ class MessagesController < ApplicationController
   def show
   end
 
+	def undelivered
+    	@messages = Message.all.where(sent: true, delivered: false)
+	end	
+	
   # GET /messages/new
   def new
     @message = Message.new
@@ -26,11 +30,13 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
 	@message = Message.new(message_params)
-	@message.buddy_id = Buddy.find_or_create_by(buddyid: @message.buddyid, fullname: @message.fullname).id if @message.buddy_id.blank?
+	@buddy = Buddy.find_or_create_by(buddyid: @message.buddyid)
+	@message.buddy_id = @buddy.id
+	@buddy.update(fullname: @message.fullname) if (@buddy.fullname.blank? && !@message.fullname.blank?)
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
+        format.html { redirect_to @buddy, notice: 'Message was successfully created.' }
         format.json { render :show, status: :created, location: @message }
       else
         format.html { render :new }
@@ -62,7 +68,7 @@ class MessagesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+	
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_message
@@ -71,6 +77,6 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      params.require(:message).permit(:content, :fullname, :buddyid, :buddy_id)
+      params.require(:message).permit(:content, :fullname, :buddyid, :sent, :received, :delivered, :buddy_id)
     end
 end

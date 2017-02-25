@@ -10,5 +10,16 @@
   <%= @buddy.buddyid %>
 </p>
 
-<%= link_to 'Edit', edit_buddy_path(@buddy) %> |
-<%= link_to 'Back', buddies_path %>
+
+<% @messages.each do |m| %>
+	<p>
+		<%= m.content %>
+		<%= link_to "See more", message_path(m) %>
+	</p>
+<% end %>
+
+<%= render 'messages/form', message: @message %>
+
+<%= link_to 'Back to Messages', messages_path %> |
+<%= link_to 'Back to Buddies', buddies_path %> |
+<%= link_to 'Edit Buddy', edit_buddy_path(@buddy) %>

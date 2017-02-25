@@ -10,6 +10,12 @@ class BuddiesController < ApplicationController
   # GET /buddies/1
   # GET /buddies/1.json
   def show
+	@buddy = Buddy.find(params[:id]) 
+	@messages = @buddy.messages #list all messages from/to buudy
+	@message = Message.new #new message
+	@message.fullname = @buddy.fullname
+	@message.buddyid = @buddy.buddyid
+	@message.buddy_id = @buddy.id
   end
 
   # GET /buddies/new

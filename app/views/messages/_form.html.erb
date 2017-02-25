@@ -16,22 +16,24 @@
     <%= f.text_area :content %>
   </div>
 
-  <div class="field">
-    <%= f.label :fullname %>
-    <%= f.text_field :fullname %>
-  </div>
+	<div class="showhide">
+		<div class="field">
+			<%= f.label :fullname %>
+			<%= f.text_field :fullname %>
+		</div>
 
-  <div class="field">
-    <%= f.label :buddyid %>
-    <%= f.text_field :buddyid %>
-  </div>
+		<div class="field">
+			<%= f.label :buddyid %>
+			<%= f.text_field :buddyid %>
+		</div>
 
-  <div class="field">
-    <%= f.label :buddy_id %>
-    <%= f.text_field :buddy_id %>
-  </div>
+		<div class="field">
+			<%= f.label :buddy_id %>
+			<%= f.text_field :buddy_id %>
+		</div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+		<div class="actions">
+			<%= f.submit %>
+		</div>
+	</div>	
 <% end %>

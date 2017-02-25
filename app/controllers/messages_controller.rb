@@ -26,8 +26,8 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
 	@message = Message.new(message_params)
-	@message.buddy_id = Buddy.find_or_create_by(buddyid: @message.buddyid, fullname: @message.fullname).id
-	  
+	@message.buddy_id = Buddy.find_or_create_by(buddyid: @message.buddyid, fullname: @message.fullname).id if @message.buddy_id.blank?
+
     respond_to do |format|
       if @message.save
         format.html { redirect_to @message, notice: 'Message was successfully created.' }

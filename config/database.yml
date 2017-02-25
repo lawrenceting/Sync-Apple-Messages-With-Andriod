@@ -5,11 +5,6 @@
 #   gem 'sqlite3'
 #
 
-production:
-  adapter: postgresql
-  pool: 5
-  timeout: 5000
-
 default: &default
   adapter: sqlite3
   pool: 5

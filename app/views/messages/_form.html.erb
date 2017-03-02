@@ -11,12 +11,11 @@
     </div>
   <% end %>
 
-	<div class="field">
-		<%= f.label :content %>
-		<%= f.text_area :content %>
-	</div>
-
-	<div class="showhide">
+		<div class="field">
+			<%= f.label :content %>
+			<%= f.text_area :content %>
+		</div>
+		
 		<div class="field">
 			<%= f.label :fullname %>
 			<%= f.text_field :fullname %>
@@ -46,9 +45,8 @@
 			<%= f.label :delivered %>
 			<%= f.check_box :delivered %>
 		</div>		
-	</div>
-
-	<div class="actions">
-		<%= f.submit %>
-	</div>
+		
+		<div class="actions">
+			<%= f.submit %>
+		</div>		
 <% end %>

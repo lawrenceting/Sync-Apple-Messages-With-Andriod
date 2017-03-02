@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
   end
 
 	def undelivered
-    	@messages = Message.all.where(sent: true, delivered: false)
+    	@messages = Message.where(sent: true, delivered: false)
 	end	
 	
   # GET /messages/new

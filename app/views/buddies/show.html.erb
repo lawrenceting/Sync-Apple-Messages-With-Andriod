@@ -1,25 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Fullname:</strong>
-  <%= @buddy.fullname %>
-</p>
+<strong>Fullname:</strong>
+<%= @buddy.fullname %>
 
-<p>
-  <strong>Buddyid:</strong>
-  <%= @buddy.buddyid %>
-</p>
+<div class="developer-mode">
+	<strong>Buddyid:</strong>
+	<%= @buddy.buddyid %>	
+	<%= render 'messages/form', message: @message %>
+</div>	
 
-<% @messages.each do |m| %>
-	<p>
-		<%= "sent: " if m.sent %>
-		<%= "received: " if m.received %>
-		<%= m.content %>
-		<%= link_to "See more", message_path(m) %>
-	</p>
-<% end %>
+<%= content_tag :div, :id => 'messages', :data => {'buddy-id' => @buddy.id, 'buddyid' => @buddy.buddyid} do -%>
+	<%= render @messages %> 
+<% end -%>
 
-<%= render 'messages/form', message: @message %>
+<form> 
+	<label>Say something:</label><br> 
+	<input type="text" data-behavior="buddy_speaker"> 
+</form>
 
 <%= link_to 'Back to Messages', messages_path %> |
 <%= link_to 'Back to Buddies', buddies_path %> |

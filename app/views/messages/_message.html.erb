@@ -1,0 +1,8 @@
+<% cache message do %>
+	<div class="message">
+		<%= "<- " if message.sent %>
+		<%= "-> " if message.received %>
+		<%= message.content %>
+		<%= link_to "See more", message_path(message) %>
+	</div>
+<% end %>

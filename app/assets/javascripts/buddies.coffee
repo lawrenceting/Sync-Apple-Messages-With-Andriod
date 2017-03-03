@@ -6,7 +6,6 @@ jQuery(document).on 'turbolinks:load', ->
 	messages = $('#messages')
 	buddy_id = messages.data('buddy-id')
 	buddyid = messages.data('buddyid')
-	console.log buddy_id
 
 #	if messages.length > 0
 #    	messages_to_bottom = -> messages.scrollTop(messages.prop('scrollHeight'))

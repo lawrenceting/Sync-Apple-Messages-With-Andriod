@@ -1,7 +1,5 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
-config.web_socket_server_url = "wss://syncmessages.herokuapp.com/cable" 	
 	
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -38,7 +36,7 @@ config.web_socket_server_url = "wss://syncmessages.herokuapp.com/cable"
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
-  # config.action_cable.url = 'wss://example.com/cable'
+   config.action_cable.url = 'wss://syncmessages.herokuapp.com/cable'
    config.action_cable.allowed_request_origins = ['https://syncmessages.herokuapp.com', 'http://syncmessages.herokuapp.com']
 	
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.

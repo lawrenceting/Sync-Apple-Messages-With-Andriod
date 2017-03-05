@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Andriod and Mac app that enables Apple messages to be received on Andriod, and for Andriod to Send Apple Messages via rails server. 
 
-Things you may want to cover:
+Feel free to fork and improve on it. 
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+PM me if you have questions about the setup. 

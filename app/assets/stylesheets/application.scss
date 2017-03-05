@@ -1,0 +1,87 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body { 
+	padding-top: 60px; 	
+    overflow: hidden;	
+    background: #e5e5e5;
+    font-family: 'Lato', sans-serif;	
+}
+
+.developer-mode {
+	display: none; //initial
+}
+
+.text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fullname {
+	text-transform: capitalize;
+    font-weight: bold;	
+	font-size: 1.17em;
+}
+
+.scrollable-div {
+	max-height: 100vh;
+	overflow-y: auto;
+}
+
+#hidden-box {
+    color: white;
+}
+
+#last-msg{
+	font-size: 1em;
+    color: dimgrey;	
+}
+
+.message{
+    max-width: 70vw;
+	word-wrap: break-word;
+	margin-bottom: 10px;
+}
+
+.message.received {
+	float:left;
+}
+
+.message.sent {
+	float:right;
+}
+
+.message > img {
+    max-width: 60vw;
+    max-height: 40vw;
+    display:block;
+    margin:auto;	
+}
+
+#chat-bar {
+    height: 45px;
+    background: #fafafa;
+}
+
+hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+	border-color: lightgray;
+}
+

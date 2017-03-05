@@ -61,3 +61,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rack-cors', :require => 'rack/cors'
+
+gem 'devise'
+
+gem 'bootstrap-sass', '~> 3.3.6'
+
+gem 'auto_html'

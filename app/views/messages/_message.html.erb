@@ -1,8 +1,11 @@
 <% cache message do %>
-	<div class="message">
-		<%= "<- " if message.sent %>
-		<%= "-> " if message.received %>
-		<%= message.content %>
-		<%= link_to "See more", message_path(message) %>
+	<div class=" col-xs-12">
+		<%= content_tag :div, :class => 'message img-thumbnail' + (message.sent ? ' sent ' : ' received ')  do -%>
+			<%= auto_html(message.content) %>
+		<% end -%>		
 	</div>
 <% end %>
+
+<div class="developer-mode">
+	<%= link_to "See more", message_path(message) %>
+</div>

@@ -1,39 +1,41 @@
-<p id="notice"><%= notice %></p>
+<% if current_user.admin? %> 
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @message.content %>
-</p>
+	<p>
+	  <strong>Content:</strong>
+	  <%= @message.content %>
+	</p>
 
-<p>
-  <strong>Fullname:</strong>
-  <%= @message.fullname %>
-</p>
+	<p>
+	  <strong>Fullname:</strong>
+	  <%= @message.fullname %>
+	</p>
 
-<p>
-  <strong>Buddyid:</strong>
-  <%= @message.buddyid %>
-</p>
+	<p>
+	  <strong>Buddyid:</strong>
+	  <%= @message.buddyid %>
+	</p>
 
-<p>
-  <strong>Sent:</strong>
-  <%= @message.sent %>
-</p>
+	<p>
+	  <strong>Sent:</strong>
+	  <%= @message.sent %>
+	</p>
 
-<p>
-  <strong>Received:</strong>
-  <%= @message.received %>
-</p>
+	<p>
+	  <strong>Received:</strong>
+	  <%= @message.received %>
+	</p>
 
-<p>
-  <strong>Delivered:</strong>
-  <%= @message.delivered %>
-</p>
+	<p>
+	  <strong>Delivered:</strong>
+	  <%= @message.delivered %>
+	</p>
 
-<p>
-  <strong>Buddy:</strong>
-  <%= @message.buddy %>
-</p>
+	<p>
+	  <strong>Buddy:</strong>
+	  <%= @message.buddy %>
+	</p>
 
-<%= link_to 'Edit', edit_message_path(@message) %> |
-<%= link_to 'Back', messages_path %>
+	<%= link_to 'Edit', edit_message_path(@message) %> |
+	<%= link_to 'Back', messages_path %>
+<% end %>

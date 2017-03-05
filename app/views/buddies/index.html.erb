@@ -1,29 +1,36 @@
-<p id="notice"><%= notice %></p>
+<div class=" col-xs-12 scrollable-div">
+	<% @buddies.each do |buddy| %>
+		<%= link_to buddy.fullname, buddy, :class => 'fullname' %>
+		<p id="last-msg" class="text-overflow"><%= buddy.messages.last.content %></p>					
+		<hr>
+	<% end %>
+	<%= render "hidden_div" %>
+</div>
 
-<h1>Buddies</h1>
+<% if current_user.admin? %> 
+	<div class="developer-mode">
+		<table>
+		  <thead>
+			<tr>
+			  <th>Fullname</th>
+			  <th>Buddyid</th>
+			  <th colspan="3"></th>
+			</tr>
+		  </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Fullname</th>
-      <th>Buddyid</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+		  <tbody>
+			<% @buddies.each do |buddy| %>
+			  <tr>
+				<td><%= buddy.fullname %></td>
+				<td><%= buddy.buddyid %></td>
+				<td><%= link_to 'Show', buddy %></td>
+				<td><%= link_to 'Edit', edit_buddy_path(buddy) %></td>
+				<td><%= link_to 'Destroy', buddy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			  </tr>
+			<% end %>
+		  </tbody>
+		</table>
 
-  <tbody>
-    <% @buddies.each do |buddy| %>
-      <tr>
-        <td><%= buddy.fullname %></td>
-        <td><%= buddy.buddyid %></td>
-        <td><%= link_to 'Show', buddy %></td>
-        <td><%= link_to 'Edit', edit_buddy_path(buddy) %></td>
-        <td><%= link_to 'Destroy', buddy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Buddy', new_buddy_path %>
+		<%= link_to 'New Buddy', new_buddy_path %>	
+	</div>
+<% end %>

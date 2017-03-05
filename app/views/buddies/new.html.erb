@@ -1,5 +1,7 @@
-<h1>New Buddy</h1>
+<% if current_user.admin? %> 
+	<h1>New Buddy</h1>
 
-<%= render 'form', buddy: @buddy %>
+	<%= render 'form', buddy: @buddy %>
 
-<%= link_to 'Back', buddies_path %>
+	<%= link_to 'Back', buddies_path %>
+<% end %>

@@ -14,3 +14,25 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require bootstrap-sprockets
+
+function notifyMe(msg) {
+	// If it's okay let's create a notification
+	if (Notification.permission === "granted") var notification = new Notification(msg); 
+
+  	// Otherwise, we need to ask the user for permission
+	else if (Notification.permission !== 'denied') {
+		Notification.requestPermission(function (permission) {
+			// If the user accepts, let's create a notification
+			if (permission === "granted") var notification = new Notification(msg);
+		});
+	}
+}
+
+function scroll_down_activate_chatbar() {
+	var el = $('#msg-container');
+	if (el.length > 0) {
+		el.scrollTop(el[0].scrollHeight);
+		document.getElementById("chat-bar").focus();
+	}
+}

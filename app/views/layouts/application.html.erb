@@ -1,14 +1,48 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Newapp</title>
+    <title>Messages</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<%= link_to '', buddies_path, :class => 'navbar-brand glyphicon glyphicon glyphicon-home' %>
+
+				<% if current_page?(buddies_path) || current_page?(root_path) %>
+					<p class="navbar-text fullname">Messages</p>
+
+				<% elsif current_page?(messages_path) || current_page?(new_user_session_path)%>
+
+				<% else %>
+					<p class="navbar-text fullname"><%= @buddy.fullname %></p>
+				<% end %>
+			</div>			
+		</div>			
+	</nav>
+		  
+	<div class="container-fluid">
+		<div class="row">
+			<%= yield %>
+		</div>
+	</div>		  
+	  
+	<div class="developer-mode">
+		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>	  		
+		<% if user_signed_in? %>
+		  Logged in as <strong><%= current_user.email %></strong>.
+		  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+		  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+		<% else %>
+		  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+		  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+		<% end %>	  
+	</div>	  
+	  
   </body>
 </html>

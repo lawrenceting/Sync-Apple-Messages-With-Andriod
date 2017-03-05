@@ -1,55 +1,55 @@
-<p id="notice"><%= notice %></p>
+<% if current_user.admin? %> 
+	<h1>Messages</h1>
 
-<h1>Messages</h1>
+	<table>
+	  <thead>
+		<tr>
+		  <th>Content</th>
+		  <th>Fullname</th>
+		  <th>Buddyid</th>
+		  <th>Sent</th>
+		  <th>Received</th>
+		  <th>Delivered</th>
+		  <th>Buddy</th>
+		  <th colspan="3"></th>
+		</tr>
+	  </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th>Fullname</th>
-      <th>Buddyid</th>
-      <th>Sent</th>
-      <th>Received</th>
-      <th>Delivered</th>
-      <th>Buddy</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+	  <tbody>
+		<% @messages.each do |message| %>
+		  <tr>
+			<td><%= message.content %></td>
+			<td><%= message.fullname %></td>
+			<td><%= message.buddyid %></td>
+			<td><%= message.sent %></td>
+			<td><%= message.received %></td>
+			<td><%= message.delivered %></td>
+			<td><%= message.buddy %></td>
+			<td><%= link_to 'Show', message %></td>
+			<td><%= link_to 'Edit', edit_message_path(message) %></td>
+			<td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		  </tr>
+		<% end %>
+	  </tbody>
+	</table>
 
-  <tbody>
-    <% @messages.each do |message| %>
-      <tr>
-        <td><%= message.content %></td>
-        <td><%= message.fullname %></td>
-        <td><%= message.buddyid %></td>
-        <td><%= message.sent %></td>
-        <td><%= message.received %></td>
-        <td><%= message.delivered %></td>
-        <td><%= message.buddy %></td>
-        <td><%= link_to 'Show', message %></td>
-        <td><%= link_to 'Edit', edit_message_path(message) %></td>
-        <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+	<br>
 
-<br>
+	<%= link_to 'New Message', new_message_path %>
 
-<%= link_to 'New Message', new_message_path %>
+	<script type="text/javascript">
 
-<script type="text/javascript">
+	  $.getJSON('http://localhost:3000/messages', function(data) {
+		  console.log(data[0]);
+	  });
+	  <%# 
 
-  $.getJSON('http://localhost:3000/messages', function(data) {
-      console.log(data[0]);
-  });
-  <%# 
+	  $.ajax({ 
+		url: "http://localhost:3000/messages", dataType: "jsonp", type: "POST", data: { message: { 
+		  content: "xxss" 
+		}}
+	  });
+	  %> 
 
-  $.ajax({ 
-    url: "http://localhost:3000/messages", dataType: "jsonp", type: "POST", data: { message: { 
-      content: "xxss" 
-    }}
-  });
-  %> 
-
-</script>
+	</script>
+<% end %>

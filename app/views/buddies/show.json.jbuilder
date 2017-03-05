@@ -1,1 +1,1 @@
-json.partial! "buddies/buddy", buddy: @buddy
+json.partial! "buddies/buddy", buddy: @buddy if current_user.admin?

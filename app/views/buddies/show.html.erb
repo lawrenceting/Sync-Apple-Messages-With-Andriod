@@ -1,23 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div id="msg-container" class="scrollable-div">
+	<%= content_tag :div, :id => 'messages', :data => {'buddy-id' => @buddy.id, 'buddyid' => @buddy.buddyid} do -%>
+		<%= render @messages %>
+	<% end -%>
+	<%= render "hidden_div" %>
+</div>
 
-<strong>Fullname:</strong>
-<%= @buddy.fullname %>
+<div class="input-group navbar-fixed-bottom">
+	<input id="chat-bar" type="text" class="form-control " placeholder="Type a message" data-behavior="buddy_speaker"> 
+	<div id="send-btn" class="input-group-addon">
+		<span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+	</div>
+</div>
 
-<div class="developer-mode">
-	<strong>Buddyid:</strong>
-	<%= @buddy.buddyid %>	
-	<%= render 'messages/form', message: @message %>
-</div>	
-
-<%= content_tag :div, :id => 'messages', :data => {'buddy-id' => @buddy.id, 'buddyid' => @buddy.buddyid} do -%>
-	<%= render @messages %> 
-<% end -%>
-
-<form> 
-	<label>Say something:</label><br> 
-	<input type="text" data-behavior="buddy_speaker"> 
-</form>
-
-<%= link_to 'Back to Messages', messages_path %> |
-<%= link_to 'Back to Buddies', buddies_path %> |
-<%= link_to 'Edit Buddy', edit_buddy_path(@buddy) %>
+<% if current_user.admin? %> 
+	<div class="developer-mode">
+		<strong>Buddyid:</strong>
+		<%= @buddy.buddyid %>
+		<%= render 'messages/form', message: @message %>
+		<%= link_to 'Back to Messages', messages_path %> |
+		<%= link_to 'Edit Buddy', edit_buddy_path(@buddy) %>	
+	</div>
+<% end %>

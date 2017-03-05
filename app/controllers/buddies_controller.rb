@@ -1,5 +1,6 @@
 class BuddiesController < ApplicationController
-  before_action :set_buddy, only: [:show, :edit, :update, :destroy]
+	before_action :authenticate_user!
+	before_action :set_buddy, only: [:show, :edit, :update, :destroy]
 
   # GET /buddies
   # GET /buddies.json
@@ -11,7 +12,7 @@ class BuddiesController < ApplicationController
   # GET /buddies/1.json
   def show
 	@buddy = Buddy.find(params[:id])
-	@messages = @buddy.messages #list all messages from/to buudy
+	@messages = @buddy.messages.last(40) #list all messages from/to buudy
 	@message = Message.new #new message
 	@message.fullname = @buddy.fullname
 	@message.buddyid = @buddy.buddyid

@@ -7,10 +7,7 @@ jQuery(document).on 'turbolinks:load', ->
 	buddy_id = messages.data('buddy-id')
 	buddyid = messages.data('buddyid')
 
-#	if messages.length > 0
-#    	messages_to_bottom = -> messages.scrollTop(messages.prop('scrollHeight'))
-#	
-#		messages_to_bottom()
+	scroll_down_activate_chatbar()
 	
 	App.buddy = App.cable.subscriptions.create {channel: "BuddyChannel", buddy_id: buddy_id},
 		connected: ->
@@ -22,16 +19,21 @@ jQuery(document).on 'turbolinks:load', ->
 		# Called when the subscription has been terminated by the server
 
 		received: (data) ->
-			$('#messages').append data['message']
-#			messages_to_bottom()
-			
-			# Called when there's incoming data on the websocket for this channel
+		# Called when there's incoming data on the websocket for this channel
+			$('#messages').append data['html']
+			notifyMe(data['message'].content)
+			scroll_down_activate_chatbar()
 
 		speak: (content) ->
 			@perform 'speak', message: content, buddy_id: buddy_id, buddyid: buddyid
 
 	$(document).on 'keypress', '[data-behavior~=buddy_speaker]', (event) ->
-		if event.keyCode is 13 # return = send
+		if event.keyCode is 13 && event.target.value.trim().length != 0 # return = send
 			App.buddy.speak event.target.value
 			event.target.value = ""
 			event.preventDefault()
+			
+	$( "#send-btn" ).on "click", () ->
+		if $( "#chat-bar" ).val().trim().length != 0 # return = send
+			App.buddy.speak $( "#chat-bar" ).val()
+			$( "#chat-bar" ).val("") 

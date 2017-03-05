@@ -1,1 +1,1 @@
-json.array! @messages, :id, :content, :buddyid
+json.array! @messages, :id, :content, :buddyid 

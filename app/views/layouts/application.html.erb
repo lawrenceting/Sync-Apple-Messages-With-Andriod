@@ -16,7 +16,7 @@
 				<% if current_page?(buddies_path) || current_page?(root_path) %>
 					<p class="navbar-text fullname">Messages</p>
 
-				<% elsif current_page?(messages_path) || current_page?(new_user_session_path)%>
+				<% elsif current_page?(messages_path) || current_page?(new_user_session_path) || current_page?(new_user_registration_path) || current_page?(edit_user_registration_path) || current_page?(destroy_user_session_path) %>
 
 				<% else %>
 					<p class="navbar-text fullname"><%= @buddy.fullname %></p>
